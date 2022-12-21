@@ -1,0 +1,127 @@
+header ul li:nth-child(5) a {background-color: var(--dark);}
+
+.presentacion {
+    width: 100%;
+    height: 100vh;
+    max-height: 22.5rem;
+    min-height: 22.5rem;
+    background: url(../img/aguacate3.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    place-items: center;
+    margin-bottom: 3.125rem;
+    position: relative;
+}
+
+.presentacion img {
+    width: 8.125rem;
+    height: 8.125rem;
+    position: absolute;
+}
+
+.presentacion .img1 {
+    left: 2%;
+    bottom: 2%;
+    display: none;
+}
+
+.presentacion .img3{
+    bottom: 2%;
+    right: 2%;
+}
+
+.presentacion h1 {
+    position: relative;
+    font-size: 3.125rem;
+    font-style: italic;
+    padding: 0 0.625rem;
+    text-align: center;
+    color: var(--light);
+    margin-bottom: 4.5rem;
+}
+
+.presentacion .wave-abajo{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 9.375rem;
+}
+
+/* Vision y mision de la empresa */
+.vision {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.contenedor-vision {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+.contenedor-vision > div {
+    display: flex;
+    padding: 0 5%;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.contenedor-vision img{
+    height: 12.5rem;
+    width: 12.5rem;
+    margin-bottom: 0.625rem;
+    object-fit: contain;
+}
+
+.contenedor-vision div h2{
+    margin-bottom: 0.3125rem;
+    color: var(--green);
+    font-size: 1.5rem;
+}
+
+.contenedor-vision div p {
+    text-align: left;
+}
+
+.contenedor-vision div p span {color: var(--lightgreen);}
+
+@media (min-aspect-ratio: 7 / 6) {
+    header ul li:nth-child(5) a {background-color: transparent}
+
+    header ul li:nth-child(5) a::before {
+        transform: translateY(-1.375rem);
+        opacity: 1;
+    }
+
+    .presentacion h1 {
+        font-size: 4.375rem;
+        margin-bottom: 1.875rem;
+    }
+
+    .contenedor-vision {
+        width: 80%;
+        max-width: 61.25rem;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .contenedor-vision:nth-child(2n) {
+        flex-direction: row-reverse;
+    }
+
+    .contenedor-vision div {
+        width: 70%;
+    }
+}

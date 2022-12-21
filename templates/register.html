@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Rey Aguacatón</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logoA.jpg') }}" type="image/x-icon">
+</head>
+<body>
+    <main>
+        <div class="registro">
+            <a href="{{ url_for('home') }}" id="titulo">
+                <img src="{{ url_for('static', filename='img/logoA.jpg') }}" alt="">
+                <h1 id="titulo-click" title="Página principal">Rey Aguacatón</h1>
+            </a>
+            <div class="contenedor-formulario">
+                <h1>Registrarse</h1>
+                <form id="form" action="{{ url_for('register') }}" method="POST">
+                    {% from 'macro.html' import renderizarFormulario %}
+                    {{ renderizarFormulario(form2) }}
+                </form>
+                <img id="imagen" src="{{ url_for('static', filename='img/aguacatito2.png') }}" alt="">
+            </div>
+        </div>
+        <div class="registro-img"></div>
+    </main>
+    <script>
+        const boton = document.querySelector('#enviar');
+        const formulario = document.querySelector('#form')
+        const key = document.querySelector('#csrf').value;
+        const titulo = document.querySelector('#titulo-click');
+        
+        boton.addEventListener('click', (e) => {
+            e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation();
+            const xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+            xhr.open('POST', `${window.origin}/register`);
+            const formData = new FormData(formulario);
+            xhr.setRequestHeader('X-CSRFToken', key);
+
+            xhr.addEventListener('load', (data) => {
+                const datos = JSON.parse(data.target.response);
+                const label = document.querySelectorAll('.form-label');
+                formulario.reset();
+                grecaptcha.reset();
+                grecaptcha.execute();
+                if ('objeto' in datos) return alert(datos['objeto']);
+                
+                if (typeof(datos) === "string") {
+                    formulario.reset();
+                    return window.location = `${window.origin}`;
+                }
+
+                for (const dato of datos) {
+                    if (label[datos.indexOf(dato)].children[1]) label[datos.indexOf(dato)].removeChild(label[datos.indexOf(dato)].children[1]);
+                    if (dato[0] != undefined) {
+                        if (label[datos.indexOf(dato)].childElementCount < 2) {
+                            const p = document.createElement('p');
+                            p.innerHTML = `${dato[0]}`;
+                            label[datos.indexOf(dato)].appendChild(p)
+                        }
+                    }
+                }
+                
+            })
+            xhr.send(formData)
+        })
+        function onSubmit(token){grecaptcha.execute()}
+    </script>
+</body>
+</html>

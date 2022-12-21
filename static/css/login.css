@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Akaya Telivigala', cursive    ;
+}
+
+:root {
+    --green: #3DB227;
+    --lightgreen: #27B257;
+    --turquee: #27B29C;
+    --lightblue: #2782B2;
+    --blue: #273DB2;
+    --purple: #5627B2;
+    --darkgreen: #1C7B0A;
+    --light: #F5F5F5;
+    --dark: #1A1A1A;
+  }
+
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus {
+  -webkit-text-fill-color: green;
+  -webkit-box-shadow: 0 0 0px 1000px lightgreen inset;
+  box-shadow: 0 0 0px 1000px lightgreen inset;
+}
+main{
+    width: 100%;
+    height: 100vh;
+    min-height: 550px;
+    display: flex;
+    overflow: hidden;
+}
+
+#login {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, lightgreen, green);
+}
+
+.titulo{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 3.4375rem;
+    display: flex;
+    align-items: center;
+    color: var(--light);
+    text-decoration: none;
+}
+
+.titulo h1{
+    font-size: 1.75rem;
+    cursor: pointer;
+}
+
+.titulo img{
+    width: 2.8125rem;
+    height: 2.8125rem;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+main .imagen{
+    width: 50%;
+    height: 100%;
+    background: url(../img/fondoSe.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
+}
+
+.loginform {
+    position: relative;
+    min-width: 17.5rem;
+    width: 90%;
+    max-width: 21.25rem;
+    background: linear-gradient(90deg, green, lightgreen);
+    border-radius: 82% 18% 79% 21% / 17% 84% 16% 83% ;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    padding: 3.125rem;
+}
+
+.loginform::before{
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, .7);
+    width: inherit;
+    height: 100%;
+    border-radius: 20% 80% 14% 86% / 78% 26% 74% 22%;
+}
+
+.loginform h1{
+    position: relative;
+    color: var(--green);
+}
+
+.loginform img{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin: 5px 0;
+}
+
+.loginform form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.loginform form .inp{
+    margin: 10px 0;
+    border: none;
+    font-size: 18px;
+    padding: 5px;
+    width: 250px;
+    color: green;
+    background: lightgreen;
+    border-radius: 5px;
+    outline: none;
+}
+
+.loginform form input::placeholder{
+    color: gray;
+}
+
+#formEnviar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#formEnviar input{
+    height: 2.5rem;
+    width: 7rem;
+    background: var(--green);
+    border-radius: 20px;
+    cursor: pointer;
+    color: var(--light);
+    transition: background-color .3s;
+    margin: 10px 0;
+    border: none;
+    font-size: 1.125rem;
+}
+
+#formEnviar :is(input:hover, input:focus) {
+    background: var(--darkgreen);
+    outline: none;
+}
+
+#formEnviar > p {
+    font-size: 0.8125rem;
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+#cm{
+    cursor: pointer;
+    user-select: none;
+}
+.campo p {
+    font-size: 14px;
+    color: red;
+    position: absolute;
+    bottom: -5px; 
+    animation: 1s pError forwards;
+}
+.campo span{
+    margin-left: 5px;
+}
+#formEnviar p a{
+    color: green;
+}
+#formEnviar p :is(a:focus, a:hover){
+    color: black;
+    outline: none;
+}
+@keyframes pError {
+    0% {
+        transform: translateX(0);
+    } 100% {
+        transform: translateX(10px);
+    }
+}
+
+@media (min-aspect-ratio: 7 / 6) {
+    #login {width: 50%;}
+    main .imagen {display: block;}
+}

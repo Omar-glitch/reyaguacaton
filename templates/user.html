@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rey Aguacatón | Usuario</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logoA.jpg') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+</head>
+<body>
+    <header id="header">
+        <div class="header-info">
+            <img src="{{ url_for('static', filename='img/logoA.jpg') }}" alt="">
+            <h1>Rey Aguacatón</h1>
+        </div>
+        <div class="usuario-info">
+            {% if info['img'] != 'user.png' %}
+                <img src="/static/imgR/{{ info['img'] }}" onerror="this.onerror=null; this.src='/static/imgR/user.png'"  alt="" id="imagen-usuario" class="img-U">
+            {% else %}
+                <img src="{{ url_for('static', filename='imgR/user.png') }}"  alt ="" id='imagen-usuario' class="img-U">
+            {% endif %}
+            <p id="flecha"></p>
+        </div>
+    </header>
+    <main id="main">
+        <div id="user">
+            {% from 'macro.html' import vistaPrevia %}
+            {{ vistaPrevia(info) }}
+        </div>
+    </main>
+    <aside id="aside">
+        <ul id="ulxd">
+            <li style="animation-delay: 0s;"><a href="{{ url_for('home') }}">Inicio</a></li>
+            <li style="animation-delay: 0.2s;"><a href="{{ url_for('shop') }}">Tienda</a></li>
+            <li style="animation-delay: 0.4s;"><a href="{{ url_for('contactUs') }}">Contáctanos</a></li>
+            <li style="animation-delay: 0.6s;"><a href="{{ url_for('faq') }}">FAQ</a></li>
+            <li style="animation-delay: 0.8s;"><a href="{{ url_for('about') }}">Acerca</a></li>
+            <li style="animation-delay: 1s;" id="cerrarSesion" title="Cerrar Sesión">Cerrar Sesión</li>
+        </ul>
+        <input id="csrf" type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    </aside>
+    <script src="{{ url_for('static', filename='js/user.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block title %} Página principal | Rey Aguacatón {% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <meta name="description" content="La página Rey Aguacatón proporciona información de los platillos y productos que se venden en la empresa.">
+    <meta name="author" content="Rey Aguacatón">
+{% endblock %}
+{% block content %}
+    <section class="portada">
+        <div class="sombra"></div>
+        <div class="portada-contenedor">
+            <h1 id="uu">El Aguacatón</h1>
+            <hr>
+            <p>Donde la vida es más verde</p>
+        </div>
+        <div class="wave-abajo" style="overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: var(--light);"></path></svg></div>
+        <img src="{{ url_for('static', filename='img/aguacatito3.png') }}" alt="">
+    </section>
+
+    <!-- Bienvenida a la página -->
+
+    <section class="bienvenido">
+        <img src="{{ url_for('static', filename='img/backgroundB.webp') }}" alt="">
+        <div class="cont-bienvenido">
+            <h1>Bienvenido al Rey Aguacatón</h1>
+            <div class="text-bienvenido">
+                <p><span>¡Hola visitante!</span>, estamos muy contentos de tenerte hoy en nuestro sitio web, ¿Qué esperas? baja ya para ver nuestros mejores platillos.</p>
+                <hr>
+                <a href="{{ url_for('shop') }}" class="ver-tienda">Ver Tienda</a>
+            </div>
+        </div>
+        <img src="{{ url_for('static', filename='img/aguacatin2.webp') }}" alt="">
+    </section>
+
+    <!-- Section Slider de Articulos -->
+
+    <section class="menu" style="--c1: var(--darkgreen); --c2: var(--lightgreen);">
+        <div class="menu-tit">
+            <hr>
+            <h1>Menú principal</h1>
+            <hr>
+        </div>
+        <div class="menu-platillos">
+            {% for platillo in platillos %}
+                <div class="platillos">
+                    <h2>{{ platillo['platillo'] }}</h2>
+                    <img src="../static/img/{{ platillo['imagen'] }}" alt="{{ platillo['platillo'] }}" draggable='false'>
+                    <div class="platillo-precio">
+                        <p>Precio: <span>{{ platillo['precio'] }} Lmps</span></p>
+                        <button tabindex="-1">Comprar</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="boton botonI"><i style="--deg: 225deg;"></i></div>
+        <div class="boton botonD"><i style="--deg: 45deg;"></i></div>
+        <img src="{{ url_for('static', filename='img/aguacatito5.png') }}" alt="" class="img-libre">
+    </section>
+
+    <section class="menu" style="--c1: var(--blue); --c2: var(--lightblue);">
+        <div class="menu-tit">
+            <hr>
+            <h1>Bebidas</h1>
+            <hr>
+        </div>
+        <div class="menu-platillos">
+            {% for bebida in bebidas %}
+                <div class="platillos" >
+                    <h2>{{ bebida['bebida'] }}</h2>
+                    <img class="plat2" src="../static/img/{{ bebida['imagen'] }}" alt="Aguazul">
+                    <div class="platillo-precio">
+                        <p>Precio: <span>{{ bebida['precio'] }} Lmps</span></p>
+                        <button tabindex="-1">Comprar</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="boton2 botonI2"><i style="--deg: 225deg;"></i></div>
+        <div class="boton2 botonD2"><i style="--deg: 45deg;"></i></div>
+        <img src="{{ url_for('static', filename='img/aguacatito6.png') }}" alt="" class="img-libre">
+    </section>
+
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}

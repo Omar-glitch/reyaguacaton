@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activación de correo | Rey Aguacatón</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header{
+            height: 70px;
+            background: linear-gradient(90deg, green, lightgreen);
+            width: 100%;
+            color: white;
+            border-collapse: collapse;
+            border-spacing: 0px;
+        }
+        .header img{
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin: 0 10px;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        #boton{
+            width: 140px;
+            height: 40px;
+            font-size: 18px;
+            background: linear-gradient(90deg, green, purple);
+            color: white;
+            border: 2px solid black;
+            outline: none;
+            border-radius: 5px;
+        }
+        .section1{
+            padding: 30px;
+            background: rgb(194, 194, 194);
+        }
+        .section1 tbody{
+            background: white;
+            border-radius: 10px 10px 1px 10px;
+        }
+        .section1 td{
+            padding-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <table cellpadding="0" cellspacing="0" width="100%" class="header">
+        <tr>
+            <td align="center" style="height: 100%;">
+                <img src="https://image.freepik.com/vector-gratis/emblema-logo-aguacate_9845-99.jpg" alt="">
+                <h1 style="display: inline-block;vertical-align: top; margin-top: 13px;">Rey Aguacatón</h1>
+            </td>
+        </tr>
+    </table>
+    <!-- Seccion 2 -->
+    <table cellpadding="0" cellspacing="0" width="100%" class="section1">
+        <tbody>
+            <tr>
+                <td align="center">
+                    <h1>Registro Rey Aguacatón</h1>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <p>Hola Omar Sahib ya casi estás listo, solamente dale click al botón de abajo y estarás registrado pa</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <a href="{{ url_for('confirm', token=token, _external=true) }}">
+                        <button id="boton">Registrarme</button>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <p>Luego de registrarte puedes ir a la sección de "Iniciar Sesión" y usar tu cuenta registrada</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <p>Si no has sido tú, el que se registrado en nuestro sitio, puedes dejar en visto este mensaje.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruebas xd</title>
+    <script>
+        function enviarXML2(obj) {
+            const formulario = document.querySelector('#form');
+            while (formulario.firstElementChild) formulario.removeChild(formulario.firstElementChild)
+            const xml = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTPRequest');
+            xml.open('POST', `${window.origin}/pruebas/si`);
+            xml.addEventListener('load', (data) => {
+                const datos = JSON.parse(data.target.response);
+                if ('error' in datos) alert(datos['error']) 
+                formulario.innerHTML = datos['form'];
+                setEnviar()
+            })
+            xml.send(obj)
+        }
+        function enviarXML(token){
+            console.log('verificado')
+        }
+        </script>
+        <!-- <script src='https://www.google.com/recaptcha/api.js?onload=enviarXML&render=explicit'></script> -->
+</head>
+<body>
+    <form id="form" action="{{ url_for('pruebas') }}" method="POST">
+        {{ form }}
+    </form>
+    <script>
+        
+        
+        const setEnviar = () => {
+            const enviar = document.querySelector('#enviar');
+            enviar.addEventListener('click', (e) => {
+                e.stopImmediatePropagation(); e.stopPropagation(); e.preventDefault();
+                const formulario = document.querySelector('#form');
+                const formData = new FormData(formulario);
+                enviarXML2(formData);
+            })
+        }
+
+        setEnviar();
+            
+    </script>
+</script>
+</body>
+</html>

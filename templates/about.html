@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}Acerca de || Rey Aguacatón{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+{% block content %}
+<section class="presentacion">
+    <div class="sombra"></div>
+    <h1>¿Quienes somos?</h1>
+    <div class="wave-abajo" style="overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: var(--light);"></path></svg></div>
+    <img class="img1" src="{{ url_for('static', filename='img/aguacatito3.png') }}" alt="">
+    <img class="img3" src="{{ url_for('static', filename='img/aguacatin1.webp') }}" alt="">
+</section>
+<section class="vision">
+    <div class="contenedor-vision">
+        <img src="{{ url_for('static', filename='img/vision.svg') }}" alt="visión">
+        <div>
+            <h2>Nuestra visión</h2>
+            <p>Ser un restaurante único, que traiga algo novedoso y no antes visto y debido a esto, tener éxito 
+                simultáneamente llenando los corazones de nuestros clientes de forma deliciosa y saludable.</p>
+        </div>
+    </div>
+    <div class="contenedor-vision">
+        <img src="{{ url_for('static', filename='img/mision.svg') }}" alt="misión">
+        <div>
+            <h2>Nuestra misión</h2>
+            <p>Ofrecer al público productos novedosos que rebasen las expectativas de forma responsable con el 
+                deseo de brindar siempre la mejor experiencia.</p>
+        </div>
+    </div>
+    <div class="contenedor-vision">
+        <img src="{{ url_for('static', filename='img/historia.svg') }}" alt="historia de la empresa">
+        <div>
+            <h2 class="tit-historia">Historia de la empresa</h2>
+            <p>Surgió en el Año del 2020, el grupo de jóvenes universitarios quisieron crear una nueva experiencia, saber que era hacerse cargo de una empresa. Y fue ahí donde tomamos cartas en el asunto y todos nos apoyamos entre sí, y a inicios de enero del año 2021, fue creado por el grupo de jóvenes. Llamado el <span>"Rey Aguacatón"</span> lo cual fue idea luego de una tarde en la que deseábamos encontrar algo distinto en la ciudad pero eran todos los mismos productos, paralelamente se debía hacer un proyecto para la clase de administración a lo que nos surgió la idea de crear un restaurante cuya principal atracción sea el <span>aguacate.</span></p>
+        </div>  
+    </div>
+</section>
+{% endblock %}

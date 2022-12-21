@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block title %}FAQ | Rey Aguacatón{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/faq.css') }}">
+{% endblock %}
+{% block content %}
+    <section class="tienda">
+        <div class="sombra"></div>
+        <h1>FAQ </h1>
+        <svg viewBox="0 0 512 512"><path d="M408 64H104a56.16 56.16 0 00-56 56v192a56.16 56.16 0 0056 56h40v80l93.72-78.14a8 8 0 015.13-1.86H408a56.16 56.16 0 0056-56V120a56.16 56.16 0 00-56-56z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><circle fill="currentColor" cx="160" cy="216" r="32"/><circle fill="currentColor" cx="256" cy="216" r="32"/><circle fill="currentColor" cx="352" cy="216" r="32"/></svg>
+    </section>
+    <!-- Section2 -->
+    <section class="preguntas-faq">
+        <div class="preg1">
+            <h1>Las preguntas más frecuentes</h1>
+            <div class="preguntas">
+                <p class="tit-preg">¿Dónde estan ubicados?</p><i class="fas fa-caret-down"></i>
+                <p class="respuesta">Estamos ubicados en Honduras, San Pedro Sula, Calle esta a la esquina de un cartel que dice Peonless.</p>
+            </div>
+            <div class="preguntas">
+                <p class="tit-preg">¿Cómo pido una comida a domicilio?</p><i class="fas fa-caret-down"></i>
+                <p class="respuesta">Lastimosamente en estos momentos no contamos con la posibilidad de poder entregar comida a domicilio, una disculpa.</p>
+            </div>
+            <div class="preguntas">
+                <p class="tit-preg">¿Tienen alguna promoción esta semana?</p><i class="fas fa-caret-down"></i>
+                <p class="respuesta">Todos los domingos hay una promoción a la comida más vendida de la semana, el cual la hace más barata.</p>
+            </div>
+            <div class="preguntas">
+                <p class="tit-preg">¿Cuál es su platillo más barato?</p><i class="fas fa-caret-down"></i>
+                <p class="respuesta">Los huevos con aguacate es el desayuno más barato con un precio de 100Lmps.</p>
+            </div>
+            <div class="preguntas">
+                <p class="tit-preg">¿Puedo dejar encargado un platillo desde esta página web?</p><i class="fas fa-caret-down"></i>
+                <p class="respuesta">Claro que sí! Usted puede reservarlo en la categoría de "Contact us" en la pestaña de arriba y puede contactarnos desde whatsapp o la red que usted prefiera.</p>
+            </div>
+        </div>
+    </section>
+    <aside id="tituloMain">
+        <h1>Comentarios</h1>
+    </aside>
+    <section id="comentarios">
+        {% for comentario in comentarios %}
+            <div class="comentario">
+                <div class="c-persona">
+                    <div>
+                        <img src="/static//imgR/{{ comentario['img'] }}" class="img-random" alt="" onerror="this.onerror=null;this.src='/static/imgR/609de82f9fbf7c12a666d8c7.jpg';">
+                        <p>{{ comentario['usuario'] | e }} {{ comentario['apellido'] | e }}</p>
+                    </div>
+                    <button class="perfil-usuario">Ver perfil</button>
+                    <input id="identificador" type="hidden" value="{{ comentario['img'].split('.')[0] }}">
+                </div>
+                <div class="c-titulo">
+                    <p>{{ comentario["titulo"] | e }}</p>
+                    <p>{{ comentario["fecha"] | e }}</p>
+                </div>
+                <div class="c-mensaje">
+                    <p>{{ comentario["msg"] | e }}</p>
+                </div>
+                <hr>
+            </div>
+        {% endfor %}
+    </section>
+    <input type="hidden" id="key" name="csrf_token" value="{{ csrf_token() }}">
+    <section id="vermas"><button id="ver">Ver más</button></section>
+    <script src="{{ url_for('static', filename='js/faq.js') }}"></script>
+{% endblock %}

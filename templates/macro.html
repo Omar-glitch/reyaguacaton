@@ -1,0 +1,184 @@
+{% macro renderizarFormulario(form) -%}
+
+<div class="form-label">
+        {{ form.nombre(*kwargs, required=false, placeholder="Nombre") }}
+</div>
+<div class="form-label">
+        {{ form.apellido(*kwargs, required=false, placeholder="Apellido") }}
+</div>
+<div class="form-label">
+        {{ form.correo(*kwargs, required=false, placeholder="Correo") }}
+        {% if form.correo.errors %}
+                <p>{{ form.correo.errors }}</p>
+        {% endif %}
+        
+</div>
+<div class="form-label">
+        {{ form.contrasena(*kwargs, required=false, placeholder="Contraseña") }}
+</div>
+<div class="form-label">
+        {{ form.repetirContrasena(*kwargs, required=false, placeholder="Confirmar contraseña") }}
+</div>
+{{ form.recaptcha }}
+{{ form.honeypot }}
+<input id="csrf" type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<div id="formEnviar">
+       {{ form.enviar(*kwargs, value="Registrarme") }}
+       <p>¿Ya tienes una cuenta? <a href="{{ url_for('login') }}">Iniciar Sesión</a></p>
+</div>
+{%- endmacro %}
+<!-- SHOP -->
+{% macro productos(info) -%}
+<h3>{{ info['platillo'] | e }}</h3>
+<img src="../static/img/{{ info['imagen'] }}" alt="">
+<button id="precio" title="Comprar">Precio: {{ info['precio'] | e }}</button>
+{%- endmacro %}
+
+{% macro productosb(info) -%}
+<h3>{{ info['bebida'] | e }}</h3>
+<img src="../static/img/{{ info['imagen'] }}" alt="">
+<button id="precio" title="Comprar">Precio: {{ info['precio'] | e }}</button>
+{%- endmacro %}
+<!-- SHOP -->
+{% macro contactanos(form, nValor) -%}
+<form id="form" action="{{ url_for('contactUs') }}" method="POST">
+    <label id="titForm">Contáctenos</label>
+    <div class="formContenido">
+        {{ form.titulo(*kwargs, placeholder="Ingrese el titulo del mensaje", required=false, id="ftit", value="") }}
+    </div>
+    <div class="formContenido">
+        {{ form.comentario(*kwargs, placeholder="Escriba su mensaje", required=false, id="fcom", value="") }}
+    </div>
+    {{ form.tiempo(*kwargs, required=false, value=nValor) }}
+    <input id="key" type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    {{ form.enviar(*kwargs, id="enviar") }}
+</form>
+{%- endmacro %}
+<!-- Faq -->
+{% macro userInformation(user) -%}
+<div class="user-random">
+    {% if user['admin'] %}
+        <div class="user-admin">⭐ Administrador ⭐</div>
+    {% else %}
+        <div class="user-visit">Visitante</div>
+    {% endif %}
+    <div class="user-information">
+        <img id="img-user-random" src="/static/imgR/{{ user['img'] }}" alt="">
+        <h3>{{ user['usuario'] | e }}</h3>
+    </div>
+    <div class="user-fecha">
+        <p>Se unió el {{ user['fecha'] | e }}</p>
+    </div>
+    <div class="user-description">
+        <h4>Descripcion</h4>
+        <p>{{ user['descripcion'] | e }}</p>
+    </div>
+</div>
+{%- endmacro %}
+
+{% macro comentarios(obj) -%}
+<div class="c-persona">
+    <div>
+        <img src="/static//imgR/{{ obj['img'] }}" class="img-random" alt="" onerror="this.onerror=null;this.src='/static/imgR/609de82f9fbf7c12a666d8c7.jpg';">
+        <p>{{ obj['usuario'] | e }} {{ obj['apellido'] | e }}</p>
+    </div>
+    <button class="perfil-usuario">Ver perfil</button>
+    <input id="identificador" type="hidden" value="{{ obj['identificador'] | safe }}">
+</div>
+<div class="c-titulo">
+    <p>{{ obj['titulo'] | e }}</p>
+    <p>{{ obj['fecha'] | e }}</p>
+</div>
+<div class="c-mensaje">
+    <p>→ {{ obj['msg'] | e }}</p>
+</div>
+<hr>
+{%- endmacro %}
+<!-- End Faq -->
+<!-- Login Form -->
+{% macro loginForm(form) -%}
+        <div class="campo">
+                {{ form.correo(*kwargs, required=false, class="inp", placeholder="Correo Electrónico...") }}
+        </div>
+        <div class="campo">
+                {{ form.contrasena(*kwargs, required=false, class="inp", placeholder="Contraseña...") }}
+        </div>
+        <div id="formEnviar">
+                {{ form.enviar(*kwargs, id="enviar") }}
+                <p>¿No te has registrado? <a href="{{ url_for('register') }}">Registrarme</a> </p>
+        </div>
+        {{ form.recaptcha }}
+        <input id="csrf" type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+{%- endmacro %}
+
+{% macro vistaPrevia(info) -%}
+    <img src="/static/imgR/{{ info['img'] }}" alt="" id="img">
+    <p id="user-name">{{ info['nombre']  }} {{ info['apellido'] }}</p>
+    <div class="descripcion">
+        <h3>Descripción</h3>
+        {% if info['descripcion'] == "" %}
+            <p id="comentario">No hay descripcion...</p>
+        {% else %}
+            <p id="comentario">{{ info['descripcion'] }}</p>
+        {% endif %}
+    </div>
+    <div class="botones">
+        <a href="{{ url_for('home') }}"><button>Página principal</button></a>
+        <button class="botonU" id="contrasena">Cambiar Contraseña</button>
+        <button class="botonU" id="editar">Editar perfil</button>
+        <button class="botonU" id="eliminar">Eliminar Cuenta</button>
+    </div>
+{%- endmacro %}
+
+{% macro cambiarContra(info, form) -%}
+<img src="/static/imgR/{{ info['img'] }}" alt="" id="img">
+<p id="user-name">{{ info['nombre']  }} {{ info['apellido'] }}</p>    
+<form id='formulario' action="{{ url_for('cambiarContra') }}" method="post"></form>
+<div class="descripcion">
+    <h3>Cambio de contraseña</h3>
+    {{ form.contrasena(*kwargs, required=false, id="contrasena", placeholder="Ingrese su contraseña actual", form="formulario") }}
+    {{ form.ncontrasena(*kwargs, required=false, id="ncontrasena", placeholder="Ingrese su contraseña nueva", form="formulario") }}
+</div>
+<div class="botones">
+    {{ form.enviar(*kwargs, id="enviar", value="Guardar") }}
+    <button id="cancelar">Cancelar</button>
+</div>
+{%- endmacro %}
+
+{% macro editar(info, form) -%}
+    <img src="/static/imgR/{{ info['img'] }}" alt="" id="img">
+    <p id="user-name">{{ info['nombre']  }} {{ info['apellido'] }}</p>
+    <form id='formulario' action="{{ url_for('user') }}" method="post" enctype="multipart/form-data"></form>
+    {{ form.imagen.label(*kwargs, id='lfile', for='file') }}
+    {{ form.imagen(*kwargs, form='formulario', required=false, id='file') }}
+    <div class="descripcion">
+        <h3>Descripción</h3>
+        {{ form.descripcion(*kwargs, form="formulario", id="desc", placeholder="Ingrese una descripción personal (opcional)")}}
+    </div>
+    <div class="botones">
+        {{ form.enviar(*kwargs, id="enviar", value="Guardar") }}
+        <button id="cancelar">Cancelar</button>
+    </div>
+{%- endmacro %}
+
+{% macro eliminar(info, form2) -%}
+    <img src="/static/imgR/{{ info['img'] }}" alt="" id="img">
+    <p id="user-name">{{ info['nombre']  }} {{ info['apellido'] }}</p>
+    <form action="{{ url_for('user') }}" id="formulario"></form>
+    <div class="descripcion">
+        <h3>¿Eliminar tu cuenta?</h3>
+        {{ form2.contrasena(*kwargs, required=false, placeholder="Ingrese su contraseña", form="formulario") }}
+        <p>Ingresa tu contraseña antes de eliminar tu cuenta para estar seguros.</p>
+    </div> 
+    <div class="botones">
+        {{ form2.enviar(*kwargs, id="enviar", value="Eliminar Cuenta") }}
+        <button id="cancelar">Cancelar</button>
+    </div>
+{%- endmacro %}
+
+{% macro pruebita(form, time) -%}
+{{ form.texto(*kwargs, required=false, value="") }}
+{{ form.csrf_token(*kwargs, value=csrf_token()) }}
+{{ form.time(*kwargs, required=false, value = time) }}
+{{ form.enviar() }}
+{%- endmacro %}

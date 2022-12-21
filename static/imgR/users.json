@@ -1,0 +1,26 @@
+[
+    {
+        "comentario": "Hola queria preguntarte como se hace para que con un comando de flask pueda obtener datos de mongoDB",
+        "fecha": "06/03/2020",
+        "img": "aguacate2.jpg",
+        "usuario": "Omar"
+    },
+    {
+        "comentario": "Hola queria compartir este enlace es bueno:V",
+        "fecha": "05/04/2020",
+        "img": "receta9.jpg",
+        "usuario": "Juan"
+    },
+    {
+        "comentario": "asd\u00f1lkfjlsdjfasljdfl\u00f1jaf\u00f1lkjl\u00f1kjf\u00f1lkajslafkdj",
+        "fecha": "18/04/2021",
+        "img": "logoA.jpg",
+        "usuario": "Kevin"
+    },
+    {
+        "comentario": "Hola queria saber que xd:V",
+        "fecha": "18/04/2021",
+        "img": "facebook.png",
+        "usuario": "Johana"
+    }
+]

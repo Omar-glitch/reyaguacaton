@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correo verificado | Rey Aguacatón</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/verificado.css') }}">
+</head>
+<body>
+    <div class="verificado">
+        {% if texto %}
+            <h1 class="error">Cuenta ya creada</h1>
+            <p>Este correo ya está verificado, lo que quiere decir que una cuenta ya ha sido creada con este correo electrónico, puedes iniciar sesión desde nuestro sitio. Si quieres borrar tu cuenta puedes responder a este correo.</p>
+        {% else %}
+            <h1 class="exito">Correo verificado</h1>
+            <p>Gracias por registrarte en el Rey Aguacatón, ahora puedes iniciar sesión en nuestro sitio web con    tu correo electrónico ya creado y puedes navegar por nuestro sitio con tu cuenta.</p>
+        {% endif %}        
+        <img src="{{ url_for('static', filename='img/aguacatito3.png') }}" alt="">
+    </div>
+</body>
+</html>

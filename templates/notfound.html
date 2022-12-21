@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 not Found</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/notfound.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logoA.jpg') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="info">
+        <h2>404 not Found</h2>
+        <p>La URL pedida no fué encontrada en el servidor.</p>
+        <p>Si has entrado a esta URL manualmente, por favor verifica que lo hayas escrito correctamente.</p>
+    </div>
+    <div class="contenedor">
+        <span class="span" id="span1">4</span><span class="span" id="span2">0</span><span class="span" id="span3">4</span>
+    </div>
+    <div class="home"><a href="{{ url_for('home') }}">Volver</a></div>
+</body>
+</html>

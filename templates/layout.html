@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logoA.jpg') }}" type="image/x-icon">
+    {% block links %}
+    {% endblock %}
+</head>
+<body>
+    <!-- Loader  -->
+    <header id="header">
+        <div class="header-top">
+            <div class="header-titulo">
+                <a href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='img/logoA.jpg') }}" alt="logo">
+                    <h1 class="juan">Rey Aguacatón</h1>
+                </a>
+            </div>
+            {% if info != None %}
+                <div class="usuario-log">
+                    <p>{{ info['nombre'] }}</p>
+                    <a id="link-user" href="{{ url_for('user') }}"><img src="/static/imgR/{{ info['img'] }}" id="superImg" alt=""></a>
+                </div>
+            {% else %}
+                <a class="usuario-log" href="{{ url_for('register') }}">
+                    <p>Registrarse</p>
+                    <i class="fas fa-user"></i>
+                </a>
+            {% endif %}
+        </div>
+        <div class="header-lista">
+            <ul style="--color: var(--light); --color2: var(--dark)">
+                <li><a href="{{ url_for('home') }}"><p>Inicio</p></a></li>
+                <li><a href="{{ url_for('shop') }}"><p>Tienda</p></a></li>
+                <li><a href="{{ url_for('contactUs') }}"><p>Contáctanos</p></a></li>
+                <li><a href="{{ url_for('faq') }}"><p>FAQ</p></a></li>
+                <li><a href="{{ url_for('about') }}"><p>Acerca</p></a></li>
+                {% if info != None %}
+                    <div class="usuario-log">
+                        <p>{{ info['nombre'] }}</p>
+                        <a id="link-user" href="{{ url_for('user') }}"><img src="/static/imgR/{{ info['img'] }}" id="superImg" alt=""></a>
+                    </div>
+                {% else %}
+                    <a class="usuario-log" href="{{ url_for('register') }}">
+                        <p>Registrarse</p>
+                        <i class="fas fa-user"></i>
+                    </a>
+                {% endif %}
+                {% if info != None %}
+                    <a id="sesion" href="{{ url_for('user') }}">Editar perfil</a></button>
+                {% else %}
+                    <a id="sesion" href="{{ url_for('login') }}">Iniciar Sesión</a></button>
+                {% endif %}
+            </ul>
+            
+        </div>
+        <!-- <i class="fas fa-bars"></i> -->
+        <div class="barras">
+            <hr class="lineSi">
+            <hr class="lineSi">
+            <hr class="lineSi">
+        </div>
+    </header>
+    <div class="mover-arriba"><i class="fas fa-caret-up"></i></div>
+    {% block content %}
+    {% endblock %}
+    <footer>
+        <div class="footer-div">
+            <h3>Enlaces útiles</h3>
+            <div>
+                <ul>
+                    <li>
+                        <a href="https://api.whatsapp.com/send?phone=97272985">
+                            <i class="fas fa-phone-square-alt"></i>
+                            <p>Contáctanos</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('faq') }}">
+                            <i class="fas fa-question-circle"></i>
+                            <p>FAQ</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-div">
+            <h3>Síguenos</h3>
+            <div>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-facebook-square"></i>
+                            <p>Facebook</p>        
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-instagram-square"></i>
+                            <p>Instagram</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-twitter-square"></i>
+                            <p>Twitter</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-div">
+            <h3>Atención al cliente</h3>
+            <div>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-envelope-square"></i>
+                            <p>rey_aguacaton@gmail.com</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-building"></i>
+                            <p>Política de privacidad</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-div">
+            <h3>Aceptamos</h3>
+            <div>
+                <img src="{{ url_for('static', filename='img/visa-card.png') }}" alt="visa">
+                <img src="{{ url_for('static', filename='img/credimatic-card.png') }}" alt="credomatic">
+            </div>
+        </div>
+        <p class="derechos">&copy; Derechos reservados por Rey Aguacatón</p>
+    </footer>
+    <script src="https://kit.fontawesome.com/be4c0d7a11.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

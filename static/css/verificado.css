@@ -1,0 +1,75 @@
+*, *::before, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background: black;
+    display: grid;
+    place-items: center;
+}
+.verificado{
+    width: 500px;
+    height: 600px;
+    color: white;
+    border: 5px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 20px;
+}
+.verificado img{
+    width: 200px;
+    height: 200px;
+    background: white;
+    border-radius: 50%;
+}
+.verificado h1{
+    font-size: 50px;
+}
+.verificado p{
+    font-size: 24px;
+    text-align: center;
+}
+.error{
+    color: red;
+    text-shadow: 1px 1px white;
+}
+.exito{
+    text-shadow: 3px 3px green;
+}
+@media only screen and (max-width: 650px){
+    .verificado{
+        width: 400px;
+        height: 500px;
+    }
+    .verificado img{
+        width: 150px;
+        height: 150px;
+    }
+    .verificado h1{
+        font-size: 40px;
+    }
+    .verificado p{
+        font-size: 20px;
+    }
+}
+@media only screen and (max-width: 450px){
+    .verificado{
+        width: 280px;
+        height: 400px;
+    }
+    .verificado img{
+        width: 75px;
+        height: 75px;
+    }
+    .verificado h1{
+        font-size: 25px;
+    }
+    .verificado p{
+        font-size: 18px;
+    }
+}

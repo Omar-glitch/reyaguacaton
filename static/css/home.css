@@ -1,0 +1,476 @@
+header ul li:nth-child(1) a::before {
+    transform: translateY(-1.375rem);
+    opacity: 1;
+}
+
+header ul li:nth-child(1) a {background-color: var(--dark);}
+
+.portada{
+    width: 100%;
+    min-height: 37.5rem;
+    max-height: 45rem;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3.125rem;
+    position: relative;
+    transition: background-image .5s;
+}
+
+.portada-contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 90%;
+    max-width: 31.25rem;
+    min-width: 17.5rem;
+    color: var(--light);
+}
+
+.portada-contenedor h1{
+    font-size: 2.25rem;
+    margin-bottom: 0.3125rem;
+}
+
+.portada-contenedor hr{
+    background: currentColor;
+    height: 0.25rem;
+    width: 90%;
+    margin-bottom: 0.3125rem;
+}
+
+.portada-contenedor p{
+    font-size: 1.375rem;
+}
+
+.portada .wave-abajo{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 7.5rem;
+}
+
+.portada img{
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    width: 9.375rem;
+    height: 9.375rem;
+}
+/* Bienvenida */
+
+.bienvenido{
+    position: relative;
+    width: 90%;
+    min-width: 17.5rem;
+    height: 31.25rem;
+    background: var(--lightgreen);
+    margin: auto;
+    display: grid;
+    place-items: center;
+    margin-bottom: 3.125rem;
+}
+
+.bienvenido > img{position: absolute;}
+
+.bienvenido img:nth-child(1){
+    top: 50%;
+    left: 5%;
+    border: 0.625rem solid var(--light);
+    height: 26.25rem;
+    object-fit: cover;
+    margin-top: -13.125rem;
+    width: 80%;
+    min-width: 12.5rem;
+    max-width: 18.75rem;
+}
+
+.bienvenido .cont-bienvenido{
+    position: relative;
+    width: 70%;
+    background: var(--light);
+    padding: 1.875rem 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-shadow: 0 0 0.3125rem rgba(0 0 0 / 50%);
+}
+
+.bienvenido img:nth-child(3){
+    bottom: 3%;
+    right: 3%;
+    width: 7.5rem;
+    height: 7.5rem;
+    filter: drop-shadow(0.3125rem 0.3125rem 0 black);
+}
+
+.cont-bienvenido h1{
+    text-align: center;
+    font-size: 1.5625rem;
+    background: linear-gradient(to right, var(--green), var(--darkgreen));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--color2);
+    margin-bottom: 0.625rem;
+}
+
+.text-bienvenido {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-bienvenido p{
+    text-align: center;
+    margin-bottom: 0.625rem;
+}
+
+.text-bienvenido p span{
+    color: var(--green);
+    font-weight: 600;
+}
+
+.text-bienvenido hr{
+    display: none;
+}
+
+.cont-bienvenido div a {
+    width: 9.375rem;
+    height: 2.5rem;
+    background: var(--darkgreen);
+    outline: none;
+    color: var(--light);
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 0.3125rem;
+    border: 0.125rem outset var(--darkgreen);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin-top: 0.625rem;
+    transition: background-color .3s, border-color .3s;
+}
+
+.cont-bienvenido div a:is(:hover, :focus) {
+    background: var(--purple);
+    border: 0.125rem outset var(--purple);
+}
+
+/* Menu */
+.menu {
+    position: relative;
+    width: 100%;
+    margin-bottom: 3.125rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu .menu-tit {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 3.125rem;
+}
+
+.menu .menu-tit hr{
+    flex: 1;
+    max-width: 18.75rem;
+    height: 0.1875rem;
+    border: none;
+    background: var(--c1);
+}
+
+.menu .menu-tit h1{
+    margin: 0 0.625rem;
+    font-size: 2.1875rem;
+    background: linear-gradient(to right, var(--c2), var(--c1));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--c2);
+    text-align: center;
+}
+
+.menu .menu-platillos{
+    width: 80%;
+    max-width: 62.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 1s linear;
+}
+
+.platillos {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 21.25rem;
+    min-width: 13.75rem;
+    border-radius: 1.875rem;
+    box-shadow: 0 0 0.3125rem rgba(0 0 0 / 25%);
+    align-items: center;
+    margin-right: 2.5rem;
+    margin: 0.3125rem 2.5rem 0.3125rem 0;
+    transform: translateX(1.25rem);
+    overflow: hidden;
+    background-color: var(--light);
+}
+
+.platillos::before{
+    content: '';
+    height: 100%;
+    position: absolute;
+    top: -50%;
+    width: 101%;
+    left: 0;
+    background: var(--c2);
+    transform: skewY(345deg);
+    transition: transform .5s, top .5s;
+}
+
+.platillos:hover::before{
+    top: -70%;
+    transform: skewY(390deg);
+}
+
+.platillos:hover img{
+    transform: scale(1.1);
+}
+
+.platillos h2{
+    color: var(--light);
+    width: 90%;
+    text-shadow: -0.125rem 0.125rem var(--c1);
+    position: relative;
+    height: 25%;
+    font-size: 1.125rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.platillos .platillo-precio{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    background: var(--c2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: height .2s;
+    color: var(--light);
+    text-shadow: 0.0625rem 0.0625rem var(--c1);
+    height: 20%;
+}
+
+.platillos .platillo-precio p span{
+    color: var(--c1);
+    text-shadow: none;
+    text-decoration: underline;
+}
+
+.platillos .platillo-precio button{
+    background-color: var(--c1);
+    border: 0.125rem outset var(--c1);
+    color: var(--light);
+    width: 7.5rem;
+    height: 1.875rem;
+    border-radius: 0.5rem;
+    margin-top: 0.3125rem;
+    font-weight: 600;
+    transition: background-color .3s, border-color .3s;
+}
+
+.platillos .platillo-precio button:hover{
+    background-color: var(--purple);
+    border-color: var(--purple);
+    cursor: pointer;
+}
+
+.platillos img {
+    width: 9.375rem;
+    object-fit: cover;
+    height: 7.5rem;
+    border-radius: 92% 8% 93% 7% / 10% 88% 12% 90%;
+    position: relative;
+    transition: transform .5s;
+    image-resolution: unset;
+    margin-top: 0.9375rem;
+}
+
+.platillos .plat2 {
+    margin-top: 0;
+    object-fit: cover;
+    border-radius: 0;
+    width: 10rem;
+    height: 10rem;
+    position: relative;
+}
+
+.boton{
+    position: absolute;
+    top: 50%;
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 50%;
+    font-size: 1.875rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.boton i{
+    font-style: normal;
+    width: 1.5rem;
+    background: green;
+    height: 0.25rem;
+    border-radius: 0.125rem;
+    transform: rotate(var(--deg)) translate(-0.375rem, -0.375rem);
+    position: relative;
+    border: none;
+    transition: background-color .5s;
+}
+
+.boton i::after{
+    content: '';
+    position: absolute;
+    bottom: -0.6875rem;
+    right: -0.6875rem;
+    width: 100%;
+    height: inherit;
+    background: inherit;
+    transform: rotate(90deg);
+}
+
+.boton:hover i{background: var(--purple);}
+.botonI{left: 3%;}
+.botonD{right: 3%;}
+
+.img-libre{
+    position: absolute;
+    top: 5%;
+    right: 1%;
+    width: 8.125rem;
+    height: 8.125rem;
+}
+
+.boton2{
+    position: absolute;
+    top: 50%;
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 50%;
+    font-size: 1.875rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 3;
+}
+.boton2 i{
+    font-style: normal;
+    width: 1.5rem;
+    background: var(--blue);
+    height: 0.25rem;
+    border-radius: 0.125rem;
+    transform: rotate(var(--deg)) translate(-0.375rem, -0.375rem);
+    position: relative;
+    border: none;
+    transition: background-color .5s;
+}
+.boton2 i::after{
+    content: '';
+    position: absolute;
+    bottom: -0.6875rem;
+    right: -0.6875rem;
+    width: 100%;
+    height: inherit;
+    background: inherit;
+    transform: rotate(90deg);
+}
+.boton2:hover i{background: var(--purple);}
+.botonI2{left: 3%;}
+.botonD2{right: 3%;}
+.botonD2 i{margin-left: 0.3125rem;}
+.botonI2 i{margin-right: 0.3125rem;}
+
+@media (min-aspect-ratio: 7 / 6) {
+    header ul li:nth-child(1) a {background-color: transparent;}
+
+    .portada-contenedor h1 {font-size: 3.25rem;}
+    .portada-contenedor p {font-size: 1.    625rem;}
+
+    .portada img{width: 11.25rem; height: 11.25rem;}
+
+    .bienvenido {height: 25rem; max-width: 48.75rem;}
+    .bienvenido img:nth-child(1) {
+        height: 21.25rem;
+        margin-top: -10.625rem;
+    }
+
+    .text-bienvenido {
+        flex-direction: row;
+        height: auto;
+    }
+
+    .text-bienvenido hr {
+        display: flex;
+        width: 0.1875rem; 
+        border: none;
+        align-self: stretch;
+        background-color: var(--green);
+    }
+
+    .text-bienvenido p {
+        width: 50%;
+    }
+
+    .bienvenido img:nth-child(3) {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .platillos {
+        min-width: 16.25rem;
+        height: 25rem;
+    }
+
+    .platillos .platillo-precio{
+        height: 0;
+    }
+    
+    .platillos:hover .platillo-precio{
+        color: var(--light);
+        text-shadow: 0.0625rem 0.0625rem var(--c1);
+        height: 20%;
+    }
+
+    .platillos h2 {font-size: 1.375rem;}
+
+    .platillos img {
+        width: 11.25rem;
+        height: 9.375rem;
+    }
+
+    .platillos .plat2 {
+        width: 12.5rem;
+        height: 12.5rem;
+    }
+}

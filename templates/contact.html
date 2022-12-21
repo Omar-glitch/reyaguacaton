@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block title %}Contáctanos || Rey Aguacatón {% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+{% endblock %}
+{% block content %}
+    <section class="pre-contact">
+        <div class="sombra"></div>
+        <div class="contenedor-contact">
+            <a href="https://facebook.com" target="_blank">
+                <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="">
+            </a>
+            <h2>Encuéntranos en Facebook</h2>
+        </div>
+        <div class="contenedor-contact">
+            <a href="https://whatsapp.com" target="_blank">
+                <img src="{{ url_for('static', filename='img/whatsapp.png') }}" alt="">
+            </a>
+            <h2>Encuéntranos en Whatsapp</h2>
+        </div>
+        <div class="contenedor-contact">
+            <a href="https://instagram.com" target="_blank">
+                <img src="{{ url_for('static', filename='img/instagram.png') }}" alt="">
+            </a>
+            <h2>Encuéntranos en Instagram</h2>
+        </div>
+        <img id="aguacatito" src="{{ url_for('static', filename='img/aguacatito1.png') }}" alt="">
+    </section>
+    <!-- Sección de contáctanos -->
+    <section id="contactanos">
+        <div id="contact">
+            <div class="imgC">
+                {% if '_id' in session %}
+                    <h1>{{ info['nombre'] }} {{ info['apellido'] }}</h1>
+                    <img src="../static/imgR/{{ info['img'] }}" id="imageUsuario" alt="">
+                    <p>Estas con la cuenta de {{ info['nombre'] }} {{ info['apellido'] }} con el correo de {{ info['correo'] }}</p>
+                    <a href="{{ url_for('user') }}" id="botonRegister">Ver cuenta</a>
+                {% else %}
+                    <h1 class="no-registrado">Usuario no registrado</h1>
+                    <img src="{{ url_for('static', filename='imgR/user.png') }}" alt="">
+                    <p>Para tener acceso a el envío de mensaje en nuestra web, tiene que registrarse.</p>
+                    <a href="{{ url_for('register') }}" id="botonRegister">Registrarme</a>
+                {% endif %}
+            </div>
+            {{ cont }}
+            <img src="{{ url_for('static', filename='img/aguacatin1.png') }}" id="img-aguacate" alt="">
+        </div>
+    </section>
+    <iframe class="i-framesi" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d961.1595419079873!2d-88.013862!3d15.503883!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f665b5ab702b1ad%3A0xb2ee162c48d6e075!2sCatarino%20rivas!5e0!3m2!1sen!2sus!4v1616025213185!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+    <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+{% endblock %}

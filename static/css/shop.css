@@ -1,0 +1,182 @@
+header ul li:nth-child(2) a::before {
+    transform: translateY(-1.375rem);
+    opacity: 1;
+}
+
+header ul li:nth-child(2) a {background-color: var(--dark);}
+
+/* Loader para la animación de carga en los productos */
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 5rem; 
+    height: 5rem;
+    margin: 12.5rem 0;
+}
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem;
+    border: 0.5rem solid var(--green);
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: var(--green) transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {animation-delay: -0.45s;}
+.lds-ring div:nth-child(2) {animation-delay: -0.3s;}
+.lds-ring div:nth-child(3) {animation-delay: -0.15s;}
+
+@keyframes lds-ring {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+.tienda {
+    position: relative;
+    width: 100%;
+    height: 11.25rem;
+    background: url(../img/fondoRe.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 3.125rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: var(--light);
+    font-size: 2rem;
+    padding-bottom: 0.625rem;
+}
+
+.tienda h1 {
+    position: relative;
+}
+
+.tienda > svg {
+    position: relative;
+    width: 3.4375rem;
+    height: 3.4375rem;
+    margin-left: 0.625rem;
+}
+
+#aside{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#aside button{
+    cursor: pointer;
+    margin: 0 0.3125rem;
+    width: 6.875rem;
+    height: 1.875rem;
+    border-radius: 0.625rem;
+    border: 0.125rem solid var(--color);
+    color: var(--color);
+    background: transparent;
+    font-size: 1.125rem;
+    font-family: 'Akaya Telivigala', cursive;
+    transition: background-color .4s;
+}
+
+#aside button:is(:hover, :focus) {
+    background: var(--color);
+    color: var(--light);
+}
+
+.menu {
+    width: 100%;
+    max-width: 57.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 0.3125rem;
+    margin: auto;
+    margin-top: 3.125rem;
+    margin-bottom: 3.125rem;
+}
+
+.bebida, .platillo{
+    margin: 0.9375rem 0.625rem;
+    width: 15rem;
+    height: 21.875rem;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    position: relative;
+}
+
+.platillo{background: radial-gradient(circle, var(--lightgreen), var(--darkgreen));}
+.bebida{background: radial-gradient(circle, var(--lightblue), var(--blue));}
+
+.bebida img, .platillo img{
+    margin-top: 0.3125rem;
+    object-fit: cover;
+}
+.bebida img{
+    width: 10.625rem;
+    height: 13.125rem;
+}
+.platillo img{
+    width: 12.5rem;
+    height: 10rem;
+    border: 0.1875rem outset var(--green);
+    border-radius: 82% 18% 83% 17% / 17% 81% 19% 83%;
+}
+.bebida h3, .platillo h3{
+    width: 100%;
+    color: var(--light);
+}
+
+.bebida h3 {text-shadow: -0.125rem 0.125rem var(--blue);}
+.platillo h3 {text-shadow: -0.125rem 0.125rem var(--darkgreen);}
+
+.bebida .info, .platillo .info{
+    overflow: hidden;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    color: var(--dark);
+    width: 100%;
+    display: grid;
+    place-items: center;
+    transition: height .4s;
+}
+
+.bebida .info {background-color: var(--blue);}
+.platillo .info {background-color: var(--darkgreen);}
+
+.bebida:hover .info, .platillo:hover .info{height: 3.75rem;}
+
+#precio{
+    width: 9.375rem;
+    height: 2.1875rem;
+    border: 0.1875rem solid var(--light);
+    border-radius: 0.625rem;
+    padding: 0.3125rem;
+    background: transparent;
+    font-size: 1.125rem;
+    color: var(--light);
+    cursor: pointer;
+    font-family: 'Akaya Telivigala', cursive;
+    transition: background-color .4s;
+}
+
+#precio:hover {
+    background: var(--light);
+    color: var(--dark);
+}
+
+
+@media (min-aspect-ratio: 7 / 6) {
+    header ul li:nth-child(2) a {background-color: transparent;}
+}

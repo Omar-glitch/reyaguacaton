@@ -1,0 +1,115 @@
+*, *::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Akaya Telivigala', cursive;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background: black;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.contenedor{
+    display: flex;
+    color: white;
+}
+
+.span{
+    font-size: 6em;
+    margin: 0 20px;
+}
+
+#span1{
+    transform: translateY(-100px);
+    animation: 4s linear anima1 forwards;
+}
+
+@keyframes anima1 {
+    0%{
+        transform: translateY(-100px);
+    }25%{
+        transform: translateY(100px);
+    }50%{
+        transform: translateY(-50px);
+    }75%{
+        transform: translateY(40px);
+    }100%{
+        transform: translateY(0px);
+    }
+}
+
+#span3{
+    transform: translateY(100px);
+    animation: 4s linear anima2 forwards;
+}
+
+@keyframes anima2 {
+    0%{
+        transform: translateY(100px);
+    }25%{
+        transform: translateY(-100px);
+    }50%{
+        transform: translateY(50px);
+    }75%{
+        transform: translateY(-40px);
+    }100%{
+        transform: translateY(0px);
+    }
+}
+
+.info{
+    color: white;
+    position: absolute;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    text-align: center;
+}
+
+.info h2{
+    text-decoration: underline;
+}
+
+.home{
+    position: absolute;
+    bottom: 50px;
+}
+.home a{
+    padding: 10px 30px;
+    border: 3px solid white;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color .5s;
+}
+.home a:is(:focus, :hover){
+    background: white;
+    color: black;
+    outline: none;
+}
+
+@media only screen and (max-width: 600px){
+    .info{
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 300px){
+    .span{
+        font-size: 5em;
+    }
+}
+
+@media only screen and (max-height: 450px){
+    .info{
+        width: 80%;
+    }
+}

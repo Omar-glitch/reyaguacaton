@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | Rey Aguacatón</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logoA.jpg') }}" type="image/x-icon">
+</head>
+<body>
+    <main>
+        <div id="login">
+            <a href="{{ url_for('home') }}" class="titulo">
+                <img src="{{ url_for('static', filename='img/logoA.jpg') }}" alt="">
+                <h1 id="titulo-link">Rey Aguacatón</h1>
+            </a>
+            <div class="loginform">
+                <h1>Iniciar Sesión</h1>
+                <img src="{{ url_for('static', filename='imgR/user.png') }}" alt="">
+                <form action="" method="POST" id="form">
+                    {% from 'macro.html' import loginForm %}
+                    {{ loginForm(form) }}
+                </form>
+            </div>
+        </div>
+        <div class="imagen"></div>
+    </main>
+    <script>
+        const boton = document.querySelector('#enviar');
+        const key = document.querySelector('#csrf').value;
+        const form = document.querySelector('#form');
+        const contenedor = document.querySelectorAll('.campo');
+        const link = document.querySelector('.titulo h1');
+
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location = `${window.origin}`
+        })
+        
+        boton.addEventListener('click', (e) => {
+            e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation();
+            const xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+            const formulario = new FormData(form);
+
+            xhr.open('POST', `${window.origin}/login`);
+            xhr.setRequestHeader('X-CSRFToken', key);
+
+            xhr.addEventListener('load', (data) => {
+                try{
+                    const datos = JSON.parse(data.target.response);
+                    grecaptcha.reset();
+                    grecaptcha.execute();
+                    if (typeof(datos) === 'string') return window.location = `${window.origin + datos}`;
+                    for (const item in datos) {
+                        if (contenedor[item].children[1]) contenedor[item].removeChild(contenedor[item].children[1]);
+                        const p = document.createElement('p');
+                        if (p.nextElementSibling) {
+                            p.nextElementSibling.remove();
+                        }
+                        p.innerHTML = `${datos[item]}`
+                        contenedor[item].appendChild(p)
+                    }
+
+                } catch (e) {
+                    window.location = `${window.origin}/user`;
+                }
+            });
+
+            xhr.send(formulario)
+        })
+
+        function onSubmit(token) {grecaptcha.execute()}
+    </script>
+</body>
+</html>

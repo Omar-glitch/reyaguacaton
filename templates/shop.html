@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Shop || Rey Aguacatón{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shop.css') }}">
+{% endblock %}
+{% block content %}
+    <section class="tienda">
+        <div class="sombra"></div>
+        <h1>Tienda</h1>
+        <svg viewBox="0 0 512 512"><circle cx="176" cy="416" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="400" cy="416" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M48 80h64l48 272h256"/><path d="M160 288h249.44a8 8 0 007.85-6.43l28.8-144a8 8 0 00-7.85-9.57H128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+    </section>
+    <aside id="aside">
+        <button class="bplatillos" style="--color: var(--green);">Platillos</button>
+        <button class="bbebidas" style="--color: var(--blue);">Bebidas</button>
+    </aside>
+    <section class="menu">
+        {% for platillo in platillos %}
+            <div class="platillo">
+                <h3>{{ platillo['platillo'] }}</h3>
+                <img src="../static/img/{{ platillo['imagen'] }}" alt="">
+                <button id="precio" title="Comprar">Precio: {{ platillo['precio'] }}</button>
+            </div>
+        {% endfor %}
+        <input type="hidden" id="csrf" name="csrf_token" value="{{ csrf_token() }}">
+    </section>
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+{% endblock %}
